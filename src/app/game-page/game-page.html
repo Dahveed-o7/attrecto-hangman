@@ -1,1 +1,68 @@
-<p>game-page works!</p>
+<section class="container">
+  <div class="game-container">
+    <div class="game-container-title">
+      <h1 class="title game-title">Hangman Game</h1>
+    </div>
+
+    <div class="game-container-figure">
+      <svg viewBox="0 0 10 12" class="hangman">
+        <path d="M1,11 h8" />
+        <path d="M9,11 v-10" />
+        <path d="M9,1 h-4" />
+        <path d="M5,1 v2" />
+        @if (gameState.incorrectGuesses() > 0) {
+        <circle cx="5" cy="4" r="1" />
+        } @if (gameState.incorrectGuesses() > 1) {
+        <path d="M5,5 v3" />
+        } @if (gameState.incorrectGuesses() > 2) {
+        <path d="M5,5 l-2,2" />
+        } @if (gameState.incorrectGuesses() > 3) {
+        <path d="M5,5 l2,2" />
+        } @if (gameState.incorrectGuesses() > 4) {
+        <path d="M5,8 l-2,2" />
+        } @if (gameState.incorrectGuesses() > 5) {
+        <path d="M5,8 l2,2" />
+        }
+      </svg>
+    </div>
+
+    <div class="game-container-controls">
+      @if (gameState.state() === 'win') {
+      <p class="game-state-text game-state-text-win">You've won!</p>
+      } @if (gameState.state() === 'lose') {
+      <p class="game-state-text game-state-text-lose">You've lost!</p>
+      }
+
+      <div class="board">
+        @for (letter of gameState.word(); track $index) {
+        <div class="board-piece">
+          @if (gameState.guesses().includes(letter) || gameState.state() !== 'playing') {
+          <span class="board-letter">{{ letter }}</span>
+          }
+        </div>
+        }
+      </div>
+
+      <ol class="keyboard">
+        @for (letter of ABC; track $index) {
+        <button
+          class="keyboard-key"
+          (click)="gameState.guessLetter(letter)"
+          [disabled]="gameState.guesses().includes(letter)"
+        >
+          {{ letter }}
+        </button>
+        }
+      </ol>
+      <p class="lives-text">
+        Remaining possibility of failure: <strong>{{ 6 - gameState.incorrectGuesses() }}</strong>
+      </p>
+      <div class="options-container">
+        <button class="btn-option btn-option-secondary" (click)="onExitClick()">end game</button>
+        <button class="btn-option btn-option-primary" (click)="gameState.startNewGame()">
+          start new game
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

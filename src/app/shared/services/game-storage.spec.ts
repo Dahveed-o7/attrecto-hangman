@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WordStorage } from './word-storage';
+import { GameStorage } from './game-storage';
 
-describe('WordStorage', () => {
-  let service: WordStorage;
+describe('GameStorage', () => {
+  let service: GameStorage;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WordStorage);
+    service = TestBed.inject(GameStorage);
   });
 
   it('should be created', () => {

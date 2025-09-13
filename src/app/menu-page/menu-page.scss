@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.menu-subtitle {
+  font-size: 0.75rem;
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.difficulty-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.btn-custom {
+  width: 200px;
+}

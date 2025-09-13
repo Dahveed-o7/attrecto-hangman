@@ -1,0 +1,108 @@
+:host {
+  display: block;
+}
+
+path,
+circle {
+  stroke: #707070;
+  stroke-width: 0.1;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.game-container {
+  display: grid;
+  row-gap: 40px;
+  grid-template-columns: 1fr 200px;
+  grid-template-areas:
+    'title figure'
+    'controls figure';
+
+  &-title {
+    grid-area: title;
+  }
+
+  &-controls {
+    grid-area: controls;
+    display: grid;
+    gap: 40px;
+  }
+
+  &-figure {
+    grid-area: figure;
+  }
+}
+
+.hangman {
+  width: 200px;
+}
+
+.board {
+  display: flex;
+  gap: 4px;
+
+  &-piece {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid dimgray;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+}
+
+.game-state-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  &-win {
+    color: green;
+  }
+  &-lose {
+    color: red;
+  }
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  &-key {
+    width: 30px;
+    height: 30px;
+    border: 1px solid dimgray;
+    background-color: white;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+
+    &:disabled {
+      border-color: darkgray;
+      color: darkgray;
+    }
+  }
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.game-title {
+  text-align: start;
+}
+
+@media (max-width: 600px) {
+  .game-container {
+    grid-template-areas:
+      'title'
+      'figure'
+      'controls';
+    grid-template-columns: 1fr;
+
+    justify-items: center;
+  }
+}

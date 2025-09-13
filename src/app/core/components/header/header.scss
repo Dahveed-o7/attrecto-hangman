@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  background-color: white;
+}
+
+.header-container {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-item {
+  padding: 10px;
+}
+
+.header-link {
+  text-transform: uppercase;
+  color: grey;
+  text-decoration-line: none;
+}

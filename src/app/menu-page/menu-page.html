@@ -1,1 +1,36 @@
-<p>menu-page works!</p>
+<section class="container menu-container">
+  <h1 class="title">Hangman Game</h1>
+  <p class="menu-subtitle">Choose a difficulty level</p>
+  <ol class="difficulty-wrapper">
+    <li>
+      <button
+        class="btn-menu"
+        [ngClass]="difficulty() === 'easy' ? 'btn-menu-primary' : 'btn-menu-secondary'"
+        (click)="selectDifficulty('easy')"
+      >
+        Easy (6-8)
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn-menu"
+        [ngClass]="difficulty() === 'medium' ? 'btn-menu-primary' : 'btn-menu-secondary'"
+        (click)="selectDifficulty('medium')"
+      >
+        Medium(9-11)
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn-menu"
+        [ngClass]="difficulty() === 'hard' ? 'btn-menu-primary' : 'btn-menu-secondary'"
+        (click)="selectDifficulty('hard')"
+      >
+        Hard(12-14)
+      </button>
+    </li>
+  </ol>
+  <button class="btn-option btn-option-primary btn-custom" [routerLink]="['/', 'game']">
+    Let's play
+  </button>
+</section>

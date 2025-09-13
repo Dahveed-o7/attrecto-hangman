@@ -1,1 +1,32 @@
-<p>admin-page works!</p>
+<section class="container">
+  <h1 class="title">Admin</h1>
+  <div class="admin-container">
+    <form class="admin-container-settings" [formGroup]="addWordForm" (ngSubmit)="onSubmit()">
+      <label for="add-word"> Type the word you want to add to the list </label>
+      <input
+        class="admin-input"
+        placeholder="New word"
+        [formControl]="addWordForm.controls.userWord"
+        type="text"
+        id="add-word"
+      />
+      <div class="button-container">
+        <button
+          type="submit"
+          [disabled]="addWordForm.invalid"
+          class="btn-option btn-option-primary"
+        >
+          save
+        </button>
+        <button type="button" [routerLink]="['/', 'home']" class="btn-option btn-option-secondary">
+          back
+        </button>
+      </div>
+    </form>
+    <ul class="admin-container-words">
+      @for (word of words(); track $index) {
+      <li>{{ word }}</li>
+      }
+    </ul>
+  </div>
+</section>
