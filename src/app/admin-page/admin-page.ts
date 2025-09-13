@@ -28,7 +28,7 @@ export class AdminPage {
       Validators.minLength(6),
       Validators.maxLength(14),
       Validators.required,
-      uniqueWordValidator(this.words()),
+      uniqueWordValidator(this.words),
     ]),
   });
 
@@ -40,6 +40,7 @@ export class AdminPage {
     const userWord = this.addWordForm.controls.userWord.value;
     this.words.update((words) => [...words, userWord]);
     this.gameStorageService.addWord(userWord);
+    this.addWordForm.controls.userWord.updateValueAndValidity();
   }
 
   onCancel() {
